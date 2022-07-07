@@ -1,32 +1,23 @@
-//array, and the rest are numbers
-
-
 const removeFromArray = function() {
+    //saves the first argument as ogArray the rest of the arguments are in argumentArray
     let argumentArray = [].slice.call(arguments);
-    console.log("argumentArray = " + argumentArray)
-    console.log(argumentArray.typeOf)
     let arrayLength = argumentArray.length
-    console.log("arrayLength = " + arrayLength)
     let ogArray = argumentArray[0];
-    console.log("ogArray = " + ogArray)
     let removeArray = []
+    //loop to add numbers that match in ogArray and argumentArray
     for(const number of ogArray) {
         console.log("This should run through all numbers in ogArray: " + number)
         for(i = 1; i <= arrayLength; i++) {
             if(number === argumentArray[i]) {
-                //if the number in ogArray and the argumentArray are equal
-                //Then remove from original array
-                //But can not remove in this step with array position because it will shift 
                 removeArray.push(number);
             }
         }
     }
+    //if ogArray and argumentArray have overlapping values: delete from ogArray
     ogArray = ogArray.filter(item => !removeArray.includes(item));
     console.log("The answer array is " + ogArray)
     return ogArray;
 
-
-    //The error is that the ogArray's item is being deleted before all the numbers are run
 
 //Below belongs after const removeFromArray =
 //function(ogArray, a, b, c, d) {
