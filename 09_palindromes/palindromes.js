@@ -1,4 +1,5 @@
 const palindromes = function (string) {
+    //make string lower case and without any punctuation
     let stringLowerCase = string.toLowerCase();
     let stringAsArray = stringLowerCase.split("");
     let arrayNoPunctuation = stringAsArray.filter(function checkLetter(letter) {
@@ -8,34 +9,21 @@ const palindromes = function (string) {
         }
     });
     
+    //creating a throw away array because .reverse() changes original array as well
     let destructArray = arrayNoPunctuation.map(x => x)
     console.log(destructArray);
 
     // reverse the string
     let reverseArray = destructArray.reverse();
 
-    //make array into string
+    //make array into string to compare in if statement
     reverseArray = reverseArray.join();
     arrayNoPunctuation = arrayNoPunctuation.join();
 
-    //TEST
-    console.log("stringArray: " + arrayNoPunctuation)
-    console.log("reverse array: " + reverseArray)
-
     //if string array = reversed string array return true
-    if(arrayNoPunctuation === reverseArray) {
-        return true;
-    }else {
-        return false;
-    }
-    
-    //might have to make the array back to string to compare
-
-    
+    return (arrayNoPunctuation === reverseArray ? true : false)
 
 };
-//TEST
-palindromes("yes");
 
 // Do not edit below this line
 module.exports = palindromes;
